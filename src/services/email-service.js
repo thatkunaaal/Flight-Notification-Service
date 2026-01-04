@@ -1,9 +1,10 @@
-const { Mailer, ServerConfig } = require("../config");
 const { TicketRepository } = require("../repositories");
 const ticketRepo = new TicketRepository();
+const { Mailer, ServerConfig } = require("../config");
 
 async function sendMail(mailTo, subject, text) {
   try {
+    console.log(mailTo, subject, text);
     const response = await Mailer.transporter.sendMail({
       from: ServerConfig.EMAIL_USER,
       to: mailTo,
